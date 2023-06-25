@@ -1,0 +1,440 @@
+#Play with your balls
+
+def get_y(m, b, x):
+    return m*x + b
+
+def calculate_error(m, b, point):
+    x_point, y_point = point
+    predicted_y = get_y(m, b, x_point)
+    return abs(y_point - predicted_y)
+
+def calculate_all_error(m, b, points):
+    total_error = 0
+    for point in points:
+        total_error += calculate_error(m, b, point)
+    return total_error
+
+possible_ms = [m * 0.1 for m in range(-100, 101)]
+possible_bs = [b * 0.1 for b in range(-200, 201)]
+
+datapoints = [(1, 2), (2, 0), (3, 4), (4, 4), (5, 3)]
+smallest_error = float('inf')
+best_m = 0
+best_b = 0
+
+for m in possible_ms:
+    for b in possible_bs:
+        current_error = calculate_all_error(m, b, datapoints)
+        if current_error < smallest_error:
+            best_m, best_b = m, b
+            smallest_error = current_error
+
+m = 0.4
+b = 1.6
+x = 6
+predicted_bounce = get_y(m, b, x)
+print("The predicted bounce height of a 6 cm ball is: ", predicted_bounce, "meters")
+
+numbers = [2, 4, 6, 8]
+for number in numbers:
+  print("hello!")
+
+i = 1
+while i <= 10:
+    print(i)
+    i += 1
+print(i)
+
+numbers = [1, 1, 2, 3]
+for number in numbers:
+  if number % 2 == 0:
+    continue
+  print(number)
+  
+numbers = [1, 1, 2, 3]
+for number in numbers:
+  if number % 2 == 0:
+    break
+  print(number)
+  
+desired_list = []
+my_list = [5, 10, -2, 8, 20]
+desired_list = [i for i in my_list if i > 5]
+print(desired_list)
+
+for i in range(3):
+    print(5)
+    
+grouped_topics = [["Algorithms", "Data Structures", "AI"], ["Linear Regression", "SQL"]]
+for sublist in sublist_element:
+    for sublist_element in grouped_topics:
+        print(sublist_element)
+
+names = ["Judith", "Abel", "Tyson", "Martha", "Beverley", "David", "Anabel"]
+estimated_insurance_costs = [1000.0, 2000.0, 3000.0, 4000.0, 5000.0, 6000.0, 7000.0]
+actual_insurance_costs = [1100.0, 2200.0, 3300.0, 4400.0, 5500.0, 6600.0, 7700.0]
+total_cost = 0
+for insurance_cost in actual_insurance_costs:
+  total_cost += insurance_cost
+print(total_cost)
+average_cost = total_cost/len(actual_insurance_costs)
+print(average_cost)
+for i in range(len(names)):
+    name = names[i]
+    insurance_cost = actual_insurance_costs[i]
+    print("the insurance cost for " + name + " is " + str(insurance_cost) + " dollars.")
+
+
+# Username and password generator
+def username_generator(first_name, last_name):
+    if len(first_name) < 3:
+        user_name = first_name
+    else:
+        user_name = first_name[0:3]
+    if len(last_name) < 4:
+        user_name += last_name
+    else:
+        user_name += last_name[0:4]
+    return user_name
+  
+    
+def password_generator(user_name):
+    password = ""
+    for i in range(0, len(user_name)):
+        password += user_name[i-1]
+    return password
+
+# Test
+first_name = "Gerald"
+last_name = "Harold"
+print(username_generator(first_name, last_name))
+print(password_generator("GerHaro"))
+
+
+def new_func():
+    def print_some_characters(word):
+      for i in range(len(word)):
+        if i % 2 == 0:
+          print(word[i])
+ 
+    print_some_characters("watermelon")
+
+new_func()
+
+def tell_me_about_icecream(favorite_icecream):
+  response = "My favorite icecream is" + favorite_icecream + "."
+  print(response)
+ 
+tell_me_about_icecream("chocolate")
+
+least_favorite_fruit = "cantaloupe"
+print(least_favorite_fruit[5:8])
+
+#using .split command to organize last names
+
+authors = "Audre Lorde,Gabriela Mistral,Jean Toomer,An Qi,Walt Whitman,Shel Silverstein,Carmen Boullosa,Kamala Suraiyya,Langston Hughes,Adrienne Rich,Nikki Giovanni"
+
+author_names = authors.split(',')
+
+print(author_names)
+
+author_last_names = []
+for name in author_names:
+  author_last_names.append(name.split()[-1])
+  
+print(author_last_names)
+
+#Using split to separate lines
+
+spring_storm_text = \
+"""The sky has given over 
+its bitterness. 
+Out of the dark change 
+all day long 
+rain falls and falls 
+as if it would never end. 
+Still the snow keeps 
+its hold on the ground. 
+But water, water 
+from a thousand runnels! 
+It collects swiftly, 
+dappled with black 
+cuts a way for itself 
+through green ice in the gutters. 
+Drop after drop it falls 
+from the withered grass-stems 
+of the overhanging embankment."""
+
+spring_storm_lines = spring_storm_text.split("\t")
+print(spring_storm_lines)
+
+#This code is splitting the multi-line string at the newlines (\n) which exist at the end of each line and saving it to a new list called spring_storm_lines.
+
+#Using the .join command to turn a list into a sentence
+reapers_line_one_words = ["Black", "reapers", "with", "the", "sound", "of", "steel", "on", "stones"]
+
+reapers_line_one = (' '.join(reapers_line_one_words))
+print(reapers_line_one)
+
+#Combining the .join and '\n\' (create new lines command)
+winter_trees_lines = ['All the complicated details', 'of the attiring and', 'the disattiring are completed!', 'A liquid moon', 'moves gently among', 'the long branches.', 'Thus having prepared their buds', 'against a sure winter', 'the wise trees', 'stand sleeping in the cold.']
+
+winter_trees_full = '\n'.join(winter_trees_lines)
+print(winter_trees_full)
+
+#Using the .strip command to remove unnecessary lines/spaces
+love_maybe_lines = ['Always    ', '     in the middle of our bloodiest battles  ', 'you lay down your arms', '           like flowering mines    ','\n' ,'   to conquer me home.    ']
+
+
+love_maybe_lines_stripped = []
+
+for line in love_maybe_lines:
+  love_maybe_lines_stripped.append(line.strip())
+  
+love_maybe_full = '\n'.join(love_maybe_lines_stripped)
+
+print(love_maybe_full)
+
+#The .split() command in Python splits a string into a list of strings, based on a delimiter. In your code, the delimiter is any whitespace character, so the .split() command will split each line of text into a list of words. The .strip() command removes any leading or trailing whitespace from a string, so the for loop will strip the whitespace from each line of text before adding it to the love_maybe_lines_stripped list. The .join() command joins a list of strings together, separated by a specified delimiter. In your code, the delimiter is a newline character, so the .join() command will join the strings in the love_maybe_lines_stripped list together, with a newline character between each string. The print() statement prints the resulting string.
+#Here is a more detailed explanation of how the .split() command works:
+#1 The .split() command takes two arguments: the delimiter and the maxsplit. The delimiter is the character or string that the command will use to split the string. The maxsplit is the maximum number of times that the command will split the string. If the maxsplit is not specified, the command will split the string as many times as possible.
+#2 The .split() command scans the string from left to right. When it encounters the delimiter, it splits the string into two parts. The first part is everything up to the delimiter, and the second part is everything after the delimiter.
+#3 The .split() command repeats this process until it has reached the end of the string or it has reached the maxsplit limit.
+#4 The .split() command returns a list of strings. Each string in the list is the result of splitting the original string at one of the delimiters.
+
+#Using the replace command to replace instances of the word 'Tomer' with 'Toomer'
+toomer_bio = \
+"""
+Nathan Pinchback Tomer, who adopted the name Jean Tomer early in his literary career, was born in Washington, D.C. in 1894. Jean is the son of Nathan Tomer was a mixed-race freedman, born into slavery in 1839 in Chatham County, North Carolina. Jean Tomer is most well known for his first book Cane, which vividly portrays the life of African-Americans in southern farmlands.
+"""
+
+toomer_bio_fixed = toomer_bio.replace('Tomer', 'Toomer')
+
+print(toomer_bio_fixed)
+
+#Using the .find command to find what place in the sentence the word "disown" appears
+god_wills_it_line_one = "The very earth will disown you"
+
+disown_placement = god_wills_it_line_one.find('disown')
+print(disown_placement)
+
+#Using the format function. Notice the quotation marks for the title
+def poem_title_card(title, poet):
+  return "The poem \"{}\" is written by {}.".format(title, poet)
+
+print(poem_title_card("I Hear America Singing", "Walt Whitman"))
+
+#A more complex way to use the format function
+def poem_description(publishing_date, author, title, original_work):
+  poem_desc = "The poem {title} by {author} was originally published in {original_work} in {publishing_date}.".format(publishing_date = publishing_date, author = author, title = title, original_work = original_work)
+  return poem_desc
+
+author = "Shel Silverstein"
+title = "My Beard"
+original_work = "Where the Sidewalk Ends"
+publishing_date = "1974"
+
+my_beard_description = poem_description(publishing_date, author, title, original_work)
+
+print(my_beard_description)
+
+#Short review to clean up a poems list
+highlighted_poems = "Afterimages:Audre Lorde:1997,  The Shadow:William Carlos Williams:1915, Ecstasy:Gabriela Mistral:1925,   Georgia Dusk:Jean Toomer:1923,   Parting Before Daybreak:An Qi:2014, The Untold Want:Walt Whitman:1871, Mr. Grumpledump's Song:Shel Silverstein:2004, Angel Sound Mexico City:Carmen Boullosa:2013, In Love:Kamala Suraiyya:1965, Dream Variations:Langston Hughes:1994, Dreamwood:Adrienne Rich:1987"
+
+highlighted_poems_list = highlighted_poems.split(',')
+
+highlighted_poems_stripped = []
+
+for poem in highlighted_poems_list:
+  highlighted_poems_stripped.append(poem.strip())
+  
+highlighted_poems_details = []
+
+for poem in highlighted_poems_stripped:
+  highlighted_poems_details.append(poem.split(':'))
+  
+titles = []
+poets = []
+dates = []
+
+for poem in highlighted_poems_details:
+  titles.append(poem[0])
+  poets.append(poem[1])
+  dates.append(poem[2])
+  
+for i in range(0,len(highlighted_poems_details)):
+    print('The poem {} was published by {} in {}'.format(titles[i], poets[i], dates[i]))
+
+#A more complex review
+medical_data = """Marina Allison   ,27   ,   31.1 , 
+#7010.0   ;Markus Valdez   ,   30, 
+22.4,   #4050.0 ;Connie Ballard ,43 
+,   25.3 , #12060.0 ;Darnell Weber   
+,   35   , 20.6   , #7500.0;
+Sylvie Charles   ,22, 22.1 
+,#3022.0   ;   Vinay Padilla,24,   
+26.9 ,#4620.0 ;Meredith Santiago, 51   , 
+29.3 ,#16330.0;   Andre Mccarty, 
+19,22.7 , #2900.0 ; 
+Lorena Hodson ,65, 33.1 , #19370.0; 
+Isaac Vu ,34, 24.8,   #7045.0"""
+
+updated_medical_data = medical_data.replace("#", "$")
+
+num_records = 0
+
+for character in updated_medical_data:
+    if character == "$":
+        num_records += 1
+
+medical_data_split = updated_medical_data.split(";")
+
+medical_records = []
+
+for record in medical_data_split:
+    medical_records.append(record.split(","))
+
+medical_records_clean = []
+
+for record in medical_records:
+    record_clean = []
+
+    for item in record:
+        record_clean.append(item.strip())
+
+    medical_records_clean.append(record_clean)
+
+names = []
+ages = []
+bmis = []
+insurance_costs = []
+
+for record in medical_records_clean:
+    names.append(record[0])
+    ages.append(record[1])
+    bmis.append(record[2])
+    insurance_costs.append(record[3].replace("$", ""))
+
+total_insurance_cost = 0
+for cost in insurance_costs:
+    total_insurance_cost += float(cost)
+
+average_insurance_cost = total_insurance_cost / len(insurance_costs)
+
+for i in range(len(names)):
+    output = f"{names[i]} is {ages[i]} years old with a BMI of {bmis[i]} and an insurance cost of ${insurance_costs[i]}"
+    print(output)
+
+#Decode caesar cipher
+
+def caesar_cipher_decode(ciphertext, shift):
+    plaintext = ""
+    for char in ciphertext:
+        if char.isalpha():
+            ascii_offset = ord('a') if char.islower() else ord('A')
+            decoded_char = chr((ord(char) - ascii_offset - shift) % 26 + ascii_offset)
+            plaintext += decoded_char
+        else:
+            plaintext += char
+    return plaintext
+
+ciphertext = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
+shift = -10
+
+#Encode caesar cipher
+
+def caesar_cipher_encode(plaintext, shift):
+    ciphertext = ""
+    for char in plaintext:
+        if char.isalpha():
+            ascii_offset = ord('a') if char.islower() else ord('A')
+            encoded_char = chr((ord(char) - ascii_offset + shift) % 26 + ascii_offset)
+            ciphertext += encoded_char
+        else:
+            ciphertext += char
+    return ciphertext
+
+plaintext = "Hello Vishal! I enjoyed deciphering your message. What will be our next adventure?"
+shift = 10
+
+#More caesar cipher decoding
+
+def caesar_cipher_decode(ciphertext, shift):
+    plaintext = ""
+    for char in ciphertext:
+        if char.isalpha():
+            ascii_offset = ord('a') if char.islower() else ord('A')
+            decoded_char = chr((ord(char) - ascii_offset - shift) % 26 + ascii_offset)
+            plaintext += decoded_char
+        else:
+            plaintext += char
+    return plaintext
+
+ciphertext1 = "jxu evviuj veh jxu iusedt cuiiqwu yi vekhjuud."
+shift1 = -10
+
+ciphertext2 = 'bqdradyuzs ygxfubxq omqemd oubtqde fa oapq kagd yqeemsqe ue qhqz yadq eqogdq!'
+shift2 = -14
+
+ciphertext3 = 'vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl hulhexmx. px\'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx.'
+shift3 = 19
+
+conference_rooms = ["executive", "hopper", "lovelace", "pod", "snooze booth"]
+capacity = [7, 20, 6, 2, 1]
+room_dict = {key:value for key, value in zip(conference_rooms, capacity)}
+ 
+print(room_dict)
+
+#Using .pop with dictionaries
+
+available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}
+health_points = 20
+
+health_points += available_items.pop("stamina grains", 0)
+health_points += available_items.pop("power stew", 0)
+health_points += available_items.pop("mystic bread", 0)
+
+print(available_items)
+print(health_points)
+
+#Using .keys with dictionaries
+
+user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+users = user_ids.keys()
+lessons = num_exercises.keys()
+
+print(users)
+print(lessons)
+
+#Using .values command with dictionaries
+
+num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+
+total_exercises = 0
+
+for exercises in num_exercises.values():
+  total_exercises += exercises
+print(total_exercises)
+
+#Using .items command
+
+pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58, "Physician": 40, "Lawyer": 37, "Aerospace Engineer": 9}
+
+for occupation, percentage in pct_women_in_occupation.items():
+  print("Women make up " + str(percentage) + " percent of " + occupation + "s.") 
+
+#Review
+
+tarot = { 1:	"The Magician", 2:	"The High Priestess", 3:	"The Empress", 4:	"The Emperor", 5:	"The Hierophant", 6:	"The Lovers", 7:	"The Chariot", 8:	"Strength", 9:	"The Hermit", 10:	"Wheel of Fortune", 11:	"Justice", 12:	"The Hanged Man", 13:	"Death", 14:	"Temperance", 15:	"The Devil", 16:	"The Tower", 17:	"The Star", 18:	"The Moon", 19:	"The Sun", 20:	"Judgement", 21:	"The World", 22: "The Fool"}
+
+spread = {}
+
+spread["past"] = tarot.pop(13)
+spread["present"] = tarot.pop(22)
+spread["future"] = tarot.pop(10)
+
+for key, value in spread.items():
+  print("Your "+key+" is the "+value+" card. ")
+
